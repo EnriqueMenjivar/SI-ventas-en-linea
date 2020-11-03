@@ -12,7 +12,7 @@ public class Estado {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idEstado", nullable = false)
+	@Column(name = "id_estado", nullable = false)
 	private int idEstado;
 
 	@Column(name = "titulo_estado", nullable = false)

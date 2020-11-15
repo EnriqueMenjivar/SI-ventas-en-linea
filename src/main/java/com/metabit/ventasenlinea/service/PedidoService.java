@@ -1,5 +1,6 @@
 package com.metabit.ventasenlinea.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.metabit.ventasenlinea.entity.Cliente;
@@ -23,4 +24,6 @@ public interface PedidoService {
 	public Pedido createPedido(Pedido pedido);
 	
 	public abstract Pedido getUltimoPedido();
+	
+	public abstract List<Pedido> findByCounterAndDates(Date fechaInicio, Date fechaFin, int idPais);
 }

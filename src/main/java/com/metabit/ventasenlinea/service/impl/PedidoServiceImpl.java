@@ -1,5 +1,6 @@
 package com.metabit.ventasenlinea.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,12 @@ public class PedidoServiceImpl implements PedidoService{
 	public Pedido getUltimoPedido() {
 		return pedidoJpaRepository.findTopByOrderByIdPedidoDesc().get(0);
 	}
-	
-	
 
+	@Override
+	public List<Pedido> findByCounterAndDates(Date fechaInicio, Date fechaFin, int idPais) {
+		// TODO Auto-generated method stub
+		return pedidoJpaRepository.findByCountryAndDates(fechaInicio, fechaFin, idPais);
+	}
+	
+	
 }

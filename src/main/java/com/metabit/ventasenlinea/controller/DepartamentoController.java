@@ -1,5 +1,6 @@
 package com.metabit.ventasenlinea.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -20,10 +21,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metabit.ventasenlinea.entity.Departamento;
+import com.metabit.ventasenlinea.entity.Pais;
 import com.metabit.ventasenlinea.service.DepartamentoService;
+import com.metabit.ventasenlinea.service.PaisService;
+import com.metabit.ventasenlinea.service.ReporteService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -36,10 +39,21 @@ public class DepartamentoController {
 	@Autowired
 	@Qualifier("departamentoServiceImpl")
 	private DepartamentoService departamentoService;
+	
+	@Autowired
+	@Qualifier("paisServiceImpl")
+	private PaisService paisService;
+	
+	@Autowired
+	@Qualifier("reporteServiceImpl")
+	private ReporteService reporteService;
+	
 
 	private static final String INDEX_VIEW = "departamento/index";
 	private static final String CREAR_DEPARTAMENTO_VIEW = "departamento/crearDepartamento";
-
+	private static final String PARAM_CONFIG_VIEW = "departamento/param_config";
+	private static final String VENTAS_DEPARTAMENTO = "departamento/ventas_por_departamento";
+	
 	@GetMapping("/listar")
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView(INDEX_VIEW);
@@ -110,4 +124,35 @@ public class DepartamentoController {
 		return "redirect:/departamento/listar";
 
 	}
+	
+	@GetMapping("/ventas-por-departamento-config")
+	public ModelAndView ventasPorDepartamentoConfig() {
+		ModelAndView mav = new ModelAndView(PARAM_CONFIG_VIEW);
+		
+		mav.addObject("paises", paisService.getAllPais());
+		
+		return mav;
+	}
+	
+	@GetMapping("/ventas-por-departamento")
+	public ModelAndView ventasPorDepartamento(
+			@RequestParam("fechaInicio") String fechaInicio,
+			@RequestParam("fechaFin") String fechaFin,
+			@RequestParam("pais") Integer idPais,
+			@RequestParam("idPDF") Integer isPDF){
+		
+		ModelAndView mav = new ModelAndView(VENTAS_DEPARTAMENTO);
+		
+		Pais pais = paisService.getPaisById(idPais);
+		List<Object[]> vetasDepartamento = reporteService.ventasTotralPorDepartamento(fechaInicio, fechaFin, idPais);
+		
+		mav.addObject("ventasDepartamento", vetasDepartamento);
+		mav.addObject("fechaInicio", fechaInicio);
+		mav.addObject("fechaFin", fechaFin);
+		mav.addObject("pais", pais);
+		mav.addObject("isPDF", isPDF);
+		
+		return mav;
+	}
+	
 }

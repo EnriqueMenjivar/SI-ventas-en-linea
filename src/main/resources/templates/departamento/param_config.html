@@ -34,9 +34,6 @@
 
 	<!-- Page level custom scripts -->
     <script th:src="@{/js/demo/datatables-demo.js}"></script>
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>  
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>  
 
 </head>
 <body id="page-top">
@@ -61,16 +58,20 @@
 								  </div>
 								  <div class="card-body">
 
+									<div id="errorMsg" class="alert alert-danger text-center" style="display: none;">
+										<h5><b>La fecha inicial debe ser menor a la final</b></h5>
+									</div>
+
                                     <div class="text-center py-4">
                                         <h1 class="h4 text-gray-900 mb-4">Configuración del Reporte</h1>
                                     </div>
 
-									<form method="GET" th:action="@{/departamento/ventas-por-departamento}">
+									<form id="reporteForm" method="GET" th:action="@{/departamento/ventas-por-departamento}">
                                     <input type="hidden" value="0" id="isPDF" name="idPDF">
 									<div class="form-group row">
 					                  <div class="col-sm-4">
                                         <label for="">Desde</label>
-					                    <input type="date" class="form-control" name="fechaInicio">
+					                    <input id="from" type="date" class="form-control" name="fechaInicio">
 					                  </div>
                                       
                                       <div class="col-sm-4">
@@ -85,16 +86,16 @@
                                       
                                       <div class="col-sm-4">
                                         <label for="">Hasta</label>
-					                    <input type="date" class="form-control" name="fechaFin">
+					                    <input id="to" type="date" class="form-control" name="fechaFin">
 					                  </div>
 					                </div>
 
 									<div class="form-group row py-5">
 					                  <div class="col-sm-6 text-center">
-					                    <button class="btn btn-primary">Generar Reporte Web</button>
+					                    <button type="button" class="btn btn-primary">Generar Reporte Web</button>
 					                  </div>
 					                  <div class="col-sm-6 text-center">
-					                    <button type="submit" id="generatePDF" class="btn btn-primary">Generar Reporte PDF</button>
+					                    <button type="button" id="generatePDF" class="btn btn-primary">Generar Reporte PDF</button>
 					                  </div>
 					                </div>
 
@@ -115,42 +116,17 @@
         $('#generatePDF').on('click', function(){
             $('#isPDF').val(1);
         });
-        
-        /*(function () {  
-            var element = $('#pdf'),  
-             cache_width = element.width(),  
-             a4 = [595.28, 841.89]; // for a4 size paper width and height  
-      
-            $('#generatePDF').on('click', function () {  
-                $('body').scrollTop(0);  
-                createPDF();  
-            });  
-            
-            //create pdf  
-            function createPDF() {  
-                getCanvas().then(function (canvas) {  
-                    var  
-                     img = canvas.toDataURL("image/png"),  
-                     doc = new jsPDF({  
-                         unit: 'px',  
-                         format: 'a4'  
-                     });  
-                    doc.addImage(img, 'JPEG', 20, 20);  
-                    doc.save('Bhavdip-html-to-pdf.pdf');  
-                    element.width(cache_width);  
-                });  
-            }  
-      
-            // create canvas object  
-            function getCanvas() {  
-                element.width((a4[0] * 1.33333) - 80).css('max-width', 'none');  
-                return html2canvas(element, {  
-                    imageTimeout: 2000,  
-                    removeContainer: true  
-                });  
-            }  
-      
-        }());  */
+
+		$('button').on('click', function(){
+			var from = new Date($('#from').val());
+			var to = new Date($('#to').val());
+
+			if(from < to){
+				$('#reporteForm').submit();
+			}else{
+				$('#errorMsg').show()
+			}
+		});
     </script>
 
 	<!-- Scroll to Top Button-->

@@ -123,16 +123,17 @@
             });
             
             //create pdf  
-            function createPDF() {  
+            function createPDF() {
+                var currentDate = new Date(Date.now()).toLocaleString();
+                console.log(currentDate);
                 getCanvas().then(function (canvas) {  
-                    var  
-                     img = canvas.toDataURL("image/png"),  
+                    var img = canvas.toDataURL("image/png"),  
                      doc = new jsPDF({  
                          unit: 'px',  
                          format: 'a4'  
                      });  
                     doc.addImage(img, 'JPEG', 20, 20);  
-                    doc.save('Bhavdip-html-to-pdf.pdf');  
+                    doc.save(`ventas-por-departamento-${currentDate}.pdf`);  
                     element.width(cache_width);  
                 });  
             }  

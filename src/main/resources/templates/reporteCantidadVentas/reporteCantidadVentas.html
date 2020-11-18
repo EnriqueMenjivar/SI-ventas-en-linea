@@ -49,11 +49,10 @@
 
 
 					<div class="card-body">
-						<h3 align="center">Reporte de cantidad de ventas en un
-							periodo de tiempo</h3>
+						<h3 align="center">Reporte de numero de ventas realizadas en un periodo determinado de meses</h3>
 						<div class=" mb-4 datesLayout">
-							<span class="labelDate">Fecha inicio: </span> <span
-								th:text="${fechaInicio}"></span> <span class="labelDate">
+							<span id="fechaInicio" class="labelDate">Fecha inicio: </span> <span
+								th:text="${fechaInicio}"></span> <span id="fechaFin" class="labelDate">
 								Fecha Fin:</span> <span th:text="${fechaFin}"></span>
 						</div>
 						<div class="table-responsive">

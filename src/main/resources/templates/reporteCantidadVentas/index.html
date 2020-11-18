@@ -52,13 +52,16 @@
 							<label class="formLabel">Fecha de Inicio</label> <input
 								type="date" id="fechaInicio" name="fechaInicio" /> <label
 								class="formLabel">Fecha de Fin</label> <input type="date"
-								id="fechaFin" name="fechaFin" /> <input class='submitReport'
+								id="fechaFin" name="fechaFin" /> <input id="generarreporte" class='submitReport'
 								type="submit" value="Generar reporte" name="generarReporte" />
 						</form>
 
 					</div>
 					<!-- Page Heading -->
 					<h6>Por favor, seleccione un rango valido de fecha inicio y fin</h6>
+					<div id="errorMsg" class="alert alert-danger text-center" style="display: none;" >
+					<h5><b>La fecha inicial debe ser menor a la final</b></h5>
+					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped"  width="100%"
@@ -111,6 +114,21 @@
 
 
 	<!-- Scripts-->
+	<script type="text/javascript">
+	const $boton = document.querySelector("#generarreporte");
+    $boton.addEventListener("click", () =>{
+			var from = new Date($('#fechaInicio').val());
+			var to = new Date($('#fechaFin').val());
+			
+			if(from < to){
+				$('#generarreporte').submit();
+			}else{
+				$('#errorMsg').show();
+				
+			}
+			
+		});
+	</script>
 
 
 </body>

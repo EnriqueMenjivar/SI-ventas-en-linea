@@ -1,0 +1,76 @@
+h6 {
+	text-align: center;
+}
+
+.Form {
+	margin-top: 1.5rem !important;
+	margin: auto;
+}
+
+.submitReport {
+	margin-left: 1.5rem;
+	border: none;
+	font-size: 1em;
+	padding: .35rem;
+	background-color: #3f48cc;
+	color: white;
+	border-radius: 20px;
+	transition: all .45s ease;
+}
+
+.submitReport:hover {
+	color: #3f48cc;
+	background-color: white;
+	border: 2px solid #3f48cc;
+}
+
+.formLabel {
+	margin: 1.5rem;
+	font-size: 1.2em;
+}
+
+.datesLayout {
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+.labelDate {
+	font-size: 1.2em;
+	margin: 1.5rem;
+}
+
+.actionsLayout {
+	text-align: center;
+}
+
+.regresarBtn, .generarBtn {
+	margin: 1.5rem;
+	border: none;
+	padding: 1rem;
+	font-size: 1.2em;
+	border-radius: 10px;
+}
+
+.regresarBtn {
+	background-color: #f3ad2e;
+	color: white;
+	transition: all 0.45s ease;
+}
+
+.regresarBtn:hover {
+	color: #f3ad2e;
+	background-color: white;
+	border: 2px solid #f3ad2e;
+}
+
+.generarBtn {
+	background-color: #3f48cc;
+	color: white;
+	transition: all 0.45s ease;
+}
+
+.generarBtn:hover {
+	color: #3f48cc;
+	background-color: white;
+	border: 2px solid #3f48cc;
+}

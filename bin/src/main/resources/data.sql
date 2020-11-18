@@ -27,11 +27,11 @@ INSERT INTO cargos (id, titulo_cargo) VALUES
 (2,'Bodega');
 
 INSERT INTO users (id_user, codigo_verificacion, email, password, verifyed) VALUES
-(1, '111111', 'ventas@gmail.com', '$2a$10$eKUggP4YYTN6sy1ftSa4K.7UshfN1gEqDuHvV1i45WUKfaaojMSW.', 1);
+(1, '111111', 'ventas@gmail.com', '$2a$10$lQA.4lHLVWBSOejnwlOTM.5qcJPJKuXYKaHSP2Wi7cWsHxXGlqhKa', 1);
 INSERT INTO users (id_user, codigo_verificacion, email, password, verifyed) VALUES
-(2, '111111', 'admin@gmail.com', '$2a$10$eKUggP4YYTN6sy1ftSa4K.7UshfN1gEqDuHvV1i45WUKfaaojMSW.', 1);
+(2, '111111', 'admin@gmail.com', '$2a$10$lQA.4lHLVWBSOejnwlOTM.5qcJPJKuXYKaHSP2Wi7cWsHxXGlqhKa', 1);
 INSERT INTO users (id_user, codigo_verificacion, email, password, verifyed) VALUES
-(3, '111111', 'bodega@gmail.com', '$2a$10$eKUggP4YYTN6sy1ftSa4K.7UshfN1gEqDuHvV1i45WUKfaaojMSW.', 1);
+(3, '111111', 'bodega@gmail.com', '$2a$10$lQA.4lHLVWBSOejnwlOTM.5qcJPJKuXYKaHSP2Wi7cWsHxXGlqhKa', 1);
 
 INSERT INTO empleados(id_empleado, apellido_empleado, direccion, nombre_empleado, id_cargo, user_id_user) VALUES 
 (1,'Ochoa','SS','Diego de jesus',1,1);

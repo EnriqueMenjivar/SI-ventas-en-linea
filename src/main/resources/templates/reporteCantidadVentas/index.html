@@ -9,7 +9,7 @@
 <meta name="description: ventas en linea" content="" />
 <meta name="author:metabit" content="" />
 
-<title>MetaBit Store Online</title>
+<title>Reporte Cantidad de Ventas</title>
 
 <!-- Custom fonts for this template-->
 <link th:href="@{/vendor/fontawesome-free/css/all.min.css}"
@@ -20,6 +20,7 @@
 
 <!-- Custom styles for this template-->
 <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
 
 <!-- Custom styles for this page -->
 <link th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}"
@@ -29,9 +30,8 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 		<!-- Sidebar -->
-		<div th:insert="fragments/sidebar::sidebar">
-		
-		</div>
+		<div th:insert="fragments/sidebar::sidebar"
+			class="bg-gradient-primary"></div>
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 			<!-- Main Content -->
@@ -39,23 +39,61 @@
 				<div th:insert="fragments/topbar::topbar"></div>
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-						<!-- ESPACIO DE TRABAJO  -->
+					<!-- ESPACIO DE TRABAJO  -->
 
-						<h1>Espacio de Trabajo</h1>
+					<!-- Page Heading -->
+					<h3 align="center">Reporte de cantidad de ventas en un
+						periodo de tiempo</h3>
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
 
-						<!-- FIN DE ESPACIO DE TRABAJO -->
+						<form class='Form' align="center" method="post"
+							th:action="@{/reporteCantidadVentas/procesar}">
+							<label class="formLabel">Fecha de Inicio</label> <input
+								type="date" id="fechaInicio" name="fechaInicio" /> <label
+								class="formLabel">Fecha de Fin</label> <input type="date"
+								id="fechaFin" name="fechaFin" /> <input class='submitReport'
+								type="submit" value="Generar reporte" name="generarReporte" />
+						</form>
+
+					</div>
+					<!-- Page Heading -->
+					<h6>Por favor, seleccione un rango valido de fecha inicio y fin</h6>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-striped"  width="100%"
+								cellspacing="0">
+								<thead>
+									<tr>
+										<th>Categoria</th>
+										<th>Cantidad en ventas</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span>XXXXXXXXXXX</span></td>
+										<td><span>###########</span></td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- FIN DE ESPACIO DE TRABAJO -->
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Scroll to Top Button-->
-	<a class="back-to-top" href="#"> <i
+	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
 
 	<!-- Logout Modal-->
 	<div th:insert="fragments/modallogout::modallogout"></div>
+
 
 	<!-- Bootstrap core JavaScript-->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
@@ -71,8 +109,9 @@
 	<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
 	<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
 
-	<!-- Page level custom scripts -->
-	<script th:src="@{/js/demo/datatables-demo.js}"></script>
+
+	<!-- Scripts-->
+
 
 </body>
 </html>

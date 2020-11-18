@@ -126,3 +126,5 @@ INSERT INTO estados(id_estado, titulo_estado) VALUES
 (3,'Autorizado');
 INSERT INTO estados(id_estado, titulo_estado) VALUES 
 (4,'Solicitado');
+
+

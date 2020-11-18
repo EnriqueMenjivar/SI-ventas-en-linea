@@ -38,7 +38,7 @@
 </head>
 <body>
 	<div id="wrapper">
-		<div th:insert="fragments/sidebar::sidebar"></div>
+		<div th:insert="fragments/sidebar::sidebar" class="bg-gradient-primary"></div>
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 			<!-- Main Content -->
@@ -112,10 +112,10 @@
 		                      		<i class="fas fa-donate"></i>
 		                      	</button>
 		                      	<button th:if="${producto.habilitado} == 1" title="Deshabilitar producto" class="btn btn-sm btn-danger" th:onclick="|hab_deshab('${producto.idArticulo}',0)|">
-		                      		<i class="fas fa-minus-circle"></i>
+		                      		<i class="fas fa-lock"></i>
 		                      	</button>
 		                      	<button th:if="${producto.habilitado} == 0" title="Habilitar producto" class="btn btn-sm btn-primary" th:onclick="|hab_deshab('${producto.idArticulo}',1)|">
-		                      		<i class="fas fa-plus-circle"></i>
+		                      		<i class="fas fa-lock-open"></i>
 		                      	</button>
 		                      </td>
 		                    </tr>

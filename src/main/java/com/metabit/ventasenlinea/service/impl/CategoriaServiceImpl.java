@@ -12,7 +12,7 @@ import com.metabit.ventasenlinea.service.CategoriaService;
 
 @Service("categoriaServiceImpl")
 public class CategoriaServiceImpl implements CategoriaService{
-
+	
 	@Autowired
 	@Qualifier("categoriaJpaRepository")
 	private CategoriaJpaRepository categoriaJpaRepository;
